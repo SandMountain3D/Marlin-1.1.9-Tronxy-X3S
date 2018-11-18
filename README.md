@@ -1,3 +1,8 @@
+## Warning
+This firmware was tested on my personal machine, but there is no guarantee it will work perfectly on yours without some modification.
+If you have any issues with the firmware please open an issue and I will try my best to help you resolve the problem.
+
+
 # Marlin 3D Printer Firmware
 <img align="right" src="../../raw/1.1.x/buildroot/share/pixmaps/logo/marlin-250.png" />
 
