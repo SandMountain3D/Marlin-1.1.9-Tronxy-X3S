@@ -4,7 +4,7 @@ If you have any issues with the firmware please open an issue and I will try my 
 
 ## Notes
 - The build dimentions are set to 330x330x400. You may have to adjust your Y limit switch to get the full 330mm on your Y axis.
-- The hotend is PID tuned for ABS at 235*C with the part cooling fan running on full (M106 S255). I used the folloeing G-code to tune my hotend, "M303 E0 S235 C8".
+- The hotend is PID tuned for ABS at 235*C with the part cooling fan running on full (M106 S255). I used the following G-code to tune my hotend, "M303 E0 S235 C8".
 - If you have artifacts on your LCD screen after upgrading to this firmware, you may have to adjust the ST7920_DELAY_1, ST7920_DELAY_2, and ST7920_DELAY_3 settings in "pins_TRONXY_MELZI.h"
 
 ### Changes
