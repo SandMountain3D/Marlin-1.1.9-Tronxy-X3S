@@ -2,9 +2,26 @@
 This firmware was tested on my personal machine, but there is no guarantee it will work perfectly on yours without some modification.
 If you have any issues with the firmware please open an issue and I will try my best to help you resolve the problem.
 
+## Notes
+- The build dimentions are set to 330x330x400. You may have to adjust your Y limit switch to get the full 330mm on your Y axis.
+- The hotend is PID tuned for ABS at 235*C with the part cooling fan running on full (M106 S255). I used the folloeing G-code to tune my hotend, "M303 E0 S235 C8".
+- If you have artifacts on your LCD screen after upgrading to this firmware, you may have to adjust the ST7920_DELAY_1, ST7920_DELAY_2, and ST7920_DELAY_3 settings in "pins_TRONXY_MELZI.h"
+
+### Changes
+20 Nov 2018 
+- Changed DEFAULT_MAX_ACCELERATION from { 2000, 2000, 100, 10000} back to the defaults { 3000, 3000, 100, 10000 }
+- Changed DEFAULT_ACCELERATION from "2000" back to default "3000"
+- Changed DEFAULT_TRAVEL_ACCELERATION from "2000" back to default "3000"
+- Changed DEFAULT_XJERK from "15.0" to "20.0"
+- Changed DEFAULT_YJERK from "15.0" to "20.0"
+- Note: The original values were values that I had set because I was having issues with my Y axis skipping steps and shifting layers. After further experimentaion and troubleshooting, I found that motor on my Y axis was weak. I changed the motor and I am no longer having issues with these settings.
+
+- Changed protection settings in "Configuration_adv.h" back to defaults.
+- Note: Settings were originally changed due to "Thermal Runaway" issues. My problem was that my part cooling fan was blowing directly on my thermistor. I adjusted the hotend cover down and the problem was solved.
+
 
 # Marlin 3D Printer Firmware
-<img align="right" src="../../raw/1.1.x/buildroot/share/pixmaps/logo/marlin-250.png" />
+<img align="right" src="https://raw.githubusercontent.com/MarlinFirmware/Marlin/1.1.x/buildroot/share/pixmaps/logo/marlin-250.png" />
 
 Marlin is the world's most popular open source firmware for Replicating Rapid Prototyper (RepRap) machines, commonly referred to as "3D printers." Marlin Firmware is highly efficient, running even on modest 16MHz embedded AVR processors. While Marlin 1.1 only supports ATmega AVR (Arduino, etc.) and AT90USB (Teensy++ 2.0), [Marlin 2.0](https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.0.x) also adds support for several ARM processors, including the SAM3X8E (Arduino Due), NXP LPC1768/LPC1769 ARM Cortex-M3 (Re-Arm, MKS SBASE, Smoothieboard), and ARM Cortex-M4 (Teensy 3.5/3.6, STM32F1/4/7).
 
