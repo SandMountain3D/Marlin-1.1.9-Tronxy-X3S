@@ -19,6 +19,14 @@ If you have any issues with the firmware please open an issue and I will try my 
 - Changed thermal protection settings in "Configuration_adv.h" back to defaults.
 - Note: Settings were originally changed due to "Thermal Runaway" issues. My problem was that my part cooling fan was blowing directly on my thermistor. I adjusted the hotend cover down and the problem was solved.
 
+25 Nov 2018
+- Changed DEFAULT_XJERK from "20.0" back to the default "10.0"
+- Changed DEFAULT_YJERK from "20.0" back to the default "10.0"
+
+- Changed Extruder steps per millimeter after fine tuning factory extruder.
+- Swapped out my extruder for a geared extruder. Settings are included commented out if you chose to change yours.
+- Swapped out Y axis motor and extruder motor. Apparently my motors were weak. The new motors required me to invert the motor direction. You will likely have to change the motor directions.
+
 
 # Marlin 3D Printer Firmware
 <img align="right" src="https://raw.githubusercontent.com/MarlinFirmware/Marlin/1.1.x/buildroot/share/pixmaps/logo/marlin-250.png" />

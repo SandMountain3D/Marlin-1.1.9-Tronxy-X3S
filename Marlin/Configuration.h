@@ -613,8 +613,38 @@
  * Default Axis Steps Per Unit (steps/mm)
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
+ *                                      
+ * Use the following formula to determine extruder steps.
+ * e_steps_per_mm = (motor_steps_per_rev * driver_microstep) * (big_gear_teeth / small_gear_teeth) / (hob_effective_diameter * 3.14159)
+ * 
+ * Examples:
+ * 
+ * // Classic Wade with a 39:11 gear ratio
+ * (200 * 16) * (39 / 11) / (7 * 3.14159) = 515.91048
+ *
+ * // Gregstruder with a 51:11 gear ratio
+ * (200 * 16) * (51 / 11) / (7 * 3.14159) = 674.65217
+ *
+ * // Gregstruder with a 43:10 gear ratio
+ * (200 * 16) * (43 / 10) / (7 * 3.14159) = 625.70681
+ * 
+ * // MK7 Direct Drive with 2engineers 50:1 planetary gear motor
+ * (48 * 16) * (50 / 1) / (10.56 * 3.14159) = 1157.49147
+ * 
+ * // AndrewBCN Ultimate Greg's Wade's Geared Extruder (thing:961630) on RAMPs
+ * (200 * 16) * (45 / 11) / (7 * 3.14159) = 595.280818 
+ * 
+ * // RepRapPro Mendel Mini Extruder on RAMPs
+ * (200 * 16) * (61 / 13) / (7 * 3.14159) = 682.79
+ * 
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95.2 } // Tronxy X3S factory parts
+ 
+// Experimenting with fine tuning the fatory extruder
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 92.59931 } // Tronxy X3S factory parts   (200*16)*(1/1)/(11*3.14159) 11mm gear effective diameter
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 93.44885 } // Tronxy X3S factory parts   (200*16)*(1/1)/(10.9*3.14159) 10.9mm gear effective diameter
+
+// I replaced the factory extruder with a geared extruder. https://www.thingiverse.com/thing:1359717
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 770.91508  } // Geared Extruder  (Big Gear 47 teeth / Small Gear 9 teeth / Hobbed Bolt Effective Diameter 6.9mm)
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -857,13 +887,13 @@
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
 #define INVERT_X_DIR false
-#define INVERT_Y_DIR false
+#define INVERT_Y_DIR true
 #define INVERT_Z_DIR true
 
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR false
+#define INVERT_E0_DIR true
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
